@@ -33,8 +33,7 @@ ThemeData getApplicationTheme() {
       shadowColor: ColorManager.primaryOpacity70,
       centerTitle: true,
       titleTextStyle:
-          getRegularStyle(color: ColorManager.white, fontSize: FontSize.s12)
-              as TextStyle,
+          getRegularStyle(color: ColorManager.white, fontSize: FontSize.s12),
     ),
     // Todo: button
     buttonTheme: ButtonThemeData(
@@ -46,15 +45,28 @@ ThemeData getApplicationTheme() {
 
     //elevated button
     elevatedButtonTheme: ElevatedButtonThemeData(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: ColorManager.primary,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppSize.s12)),
-      textStyle: getRegularStyle(color: ColorManager.primary) as TextStyle,
-      )
-    )
+        style: ElevatedButton.styleFrom(
+      backgroundColor: ColorManager.primary,
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppSize.s12)),
+      textStyle: getRegularStyle(color: ColorManager.primary),
+    )),
 
     // Todo: text theme
+    textTheme: TextTheme(
+      //headline1
+      displayLarge: getSemiBoldStyle(
+          color: ColorManager.darkGrey, fontSize: FontSize.s16),
 
+      //subtitle1
+      titleMedium:
+          getMediumStyle(color: ColorManager.lightGrey, fontSize: FontSize.s14),
+
+      // caption
+      bodySmall: getRegularStyle(color: ColorManager.grey1),
+      // body text1
+      bodyLarge: getRegularStyle(color: ColorManager.grey),
+    ),
     // Todo: input decoration
   );
 }
