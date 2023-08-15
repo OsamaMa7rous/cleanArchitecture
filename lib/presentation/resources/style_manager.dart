@@ -1,5 +1,5 @@
 
-import 'package:cleanarc/presentation/font_manager.dart';
+import 'package:cleanarc/presentation/resources/font_manager.dart';
 import 'package:flutter/material.dart';
 
 // private
