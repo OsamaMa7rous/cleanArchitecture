@@ -3,6 +3,7 @@ import 'package:cleanarc/presentation/login/login.dart';
 import 'package:cleanarc/presentation/main/main_view.dart';
 import 'package:cleanarc/presentation/onboarding/onboarding.dart';
 import 'package:cleanarc/presentation/register/register.dart';
+import 'package:cleanarc/presentation/resources/strings_manager.dart';
 import 'package:cleanarc/presentation/splash/splash.dart';
 import 'package:cleanarc/presentation/store_details/store_details.dart';
 import 'package:flutter/cupertino.dart';
@@ -58,10 +59,10 @@ class RouteGenerator {
     return MaterialPageRoute(
       builder: (context) => Scaffold(
         appBar: AppBar(
-          title: const Text("No Route Found"),
+          title: const Text(AppStrings.noRouteFound),
         ),
         body: const Center(
-          child: Text("No Route Found"),
+          child: Text(AppStrings.noRouteFound),
         ),
       ),
     );
