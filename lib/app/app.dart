@@ -18,11 +18,17 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      onGenerateRoute: RouteGenerator.getRoute,
-      initialRoute: Routes.splashRoute,
-      debugShowCheckedModeBanner: false,
-      theme: getApplicationTheme(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => AuthCubit(),),
+      ],
+
+      child: MaterialApp(
+        onGenerateRoute: RouteGenerator.getRoute,
+        initialRoute: Routes.splashRoute,
+        debugShowCheckedModeBanner: false,
+        theme: getApplicationTheme(),
+      ),
     );
   }
 }
