@@ -48,18 +48,18 @@ class _OnBoardingViewState extends State<OnBoardingView> {
           bottomSheet: Container(
             height: AppSize.s100,
             color: ColorManager.white,
-
             child: Column(
               children: [
                 Align(
                   alignment: Alignment.centerRight,
                   child: TextButton(
                       onPressed: () {},
-                      child: const Text(
-                        AppStrings.skip,
+                      child:  Text(
+                        AppStrings.skip,style: Theme.of(context).textTheme.titleSmall,
                         textAlign: TextAlign.end,
                       )),
-                )
+                ),
+                Expanded(child: _getBottomSheet(object)),
               ],
             ),
           ),
@@ -68,6 +68,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
     );
   }
 }
+
 
 class OnBoardingScreens extends StatelessWidget {
   OnBoardingScreens({required this.sliderObject});
@@ -99,11 +100,82 @@ class OnBoardingScreens extends StatelessWidget {
         const SizedBox(
           height: AppSize.s60,
         ),
-        SvgPicture.asset(sliderObject!.image,),
+        SvgPicture.asset(
+          sliderObject!.image,
+        ),
       ],
     );
   }
 }
+
+Widget _getBottomSheet(AuthCubit object) {
+  return Container(
+    color: ColorManager.primary,
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(AppPadding.p14),
+          child: GestureDetector(
+            child: SizedBox(
+              height: AppSize.s20,
+              width: AppSize.s20,
+              child: SvgPicture.asset(AssetsImages.leftArrowIcon),
+            ),
+            onTap: () {
+              int index= object.getPreviousIndex();
+
+              object.pageController.animateToPage(index,
+                duration: const Duration(milliseconds: DurationConstant.d300),
+                curve: Curves.bounceInOut,
+
+              );
+            },
+          ),
+        ),
+        Row(
+          children: [
+            for (int i = 0; i < object.getSliderData.length; i++)
+              _getProperCircle(object: object, index: i),
+          ],
+        ),
+        Padding(
+          padding: const EdgeInsets.all(AppPadding.p14),
+          child: GestureDetector(
+            child: SizedBox(
+              height: AppSize.s20,
+              width: AppSize.s20,
+              child: SvgPicture.asset(AssetsImages.rightArrowIcon),
+            ),
+            onTap: () {
+              int index= object.getNextIndex();
+
+              object.pageController.animateToPage(index,duration: const Duration(milliseconds: DurationConstant.d300),
+                curve: Curves.bounceInOut,
+              );
+            },
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+
+Widget _getProperCircle({required AuthCubit object, required int index}) {
+  if (index == object.currentIndex) {
+    return Padding(
+      padding: const EdgeInsets.all(AppSize.s6),
+      child: SvgPicture.asset(AssetsImages.hollowCircleIcon),
+    );
+  } else {
+    return Padding(
+      padding: const EdgeInsets.all(AppSize.s6),
+      child: SvgPicture.asset(AssetsImages.solidCircleIcon),
+    );
+  }
+}
+
 
 class SliderObject {
   String title;

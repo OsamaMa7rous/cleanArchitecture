@@ -37,6 +37,35 @@ class AuthCubit extends Cubit<AuthState> {
         subTitle: AppStrings.onBoardingSubTitle4),
   ];
 
+  int getPreviousIndex() {
+    print(currentIndex);
+
+    int previousIndex = currentIndex--;
+    // print(previousIndex);
+
+    if (previousIndex == 0) {
+      //  print("the currentIndex $currentIndex");
+
+      currentIndex = getSliderData.length - 1;
+      // print("the currentIndexAfter $currentIndex");
+
+      emit(ChangCurrentIndexState());
+    }
+    return currentIndex;
+  }
+
+  int getNextIndex() {
+    int nextIndex = currentIndex++;
+
+    if (nextIndex >= getSliderData.length - 1) {
+      currentIndex = 0;
+
+      emit(ChangCurrentIndexState());
+    }
+
+    return currentIndex;
+  }
+
   void changeCurrentIndex(int index) {
     currentIndex = index;
     emit(ChangCurrentIndexState());

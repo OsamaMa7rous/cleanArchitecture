@@ -21,6 +21,7 @@ class AppSize{
   static const s0 = 0.0;
   static const s1_5 = 1.5;
   static const s4 = 4.0;
+  static const s6 = 6.0;
   static const s8 = 8.0;
   static const s12 = 8.0;
   static const s14 = 14.0;
@@ -35,3 +36,6 @@ class AppSize{
 }
 
 
+class DurationConstant{
+static const int d300 = 300;
+}

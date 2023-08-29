@@ -68,6 +68,10 @@ flutter:
      - assets/images/onBoarding_logo2.svg
      - assets/images/onBoarding_logo3.svg
      - assets/images/onBoarding_logo4.svg
+     - assets/images/right_arrow_icon.svg
+     - assets/images/left_arrow_icon.svg
+     - assets/images/hollow_circle.svg
+     - assets/images/solid_circle.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
